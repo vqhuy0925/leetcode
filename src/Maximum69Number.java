@@ -7,33 +7,45 @@ public class Maximum69Number {
     }
 
     static class Solution {
+        // public int maximum69Number(int num) {
+        // int[] nums = convertIntegerToArray(num);
+        // int indexChanged = 0;
+        // for (int i = 0; i < nums.length; i++) {
+        // System.out.println(nums[i]);
+        // if (nums[i] < 9) {
+        // indexChanged = i;
+        // break;
+        // }
+        // }
+        // nums[indexChanged] = 9;
+        // int result = 0;
+        // for (int digit : nums) {
+        // result = result * 10 + digit;
+        // }
+        // return result;
+        // }
+
+        // public static int[] convertIntegerToArray(int number) {
+        // String s = String.valueOf(number);
+        // int[] digits = new int[s.length()];
+
+        // for (int i = 0; i < s.length(); i++) {
+        // digits[i] = Character.getNumericValue(s.charAt(i));
+        // }
+        // return digits;
+        // }
+
         public int maximum69Number(int num) {
-            int[] nums = convertIntegerToArray(num);
-            int indexChanged = 0;
-            for (int i = 0; i < nums.length; i++) {
-                System.out.println(nums[i]);
-                if (nums[i] < 9) {
-                    indexChanged = i;
-                    break;
-                }
+            String s = String.valueOf(num);
+            int firstOfSix = s.indexOf('6');
+            if (firstOfSix == -1) {
+                return num;
             }
-            nums[indexChanged] = 9;
-            int result = 0;
-            for (int digit : nums) {
-                result = result * 10 + digit;
-            }
-            return result;
+            StringBuilder sb = new StringBuilder(s);
+            sb.setCharAt(firstOfSix, '9');
+            return Integer.parseInt(sb.toString());
         }
 
-        public static int[] convertIntegerToArray(int number) {
-            String s = String.valueOf(number);
-            int[] digits = new int[s.length()];
-
-            for (int i = 0; i < s.length(); i++) {
-                digits[i] = Character.getNumericValue(s.charAt(i));
-            }
-            return digits;
-        }
     }
 
 }
